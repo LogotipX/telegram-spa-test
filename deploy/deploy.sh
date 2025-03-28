@@ -1,31 +1,36 @@
-#!/usr/bin/env sh
+# #!/usr/bin/env sh
 
-# abort on errors
-set -e
+# # abort on errors
+# set -e
 
-# build
-npm run build
+# # build
+# npm run build
 
-# navigate into the build output directory
-cd dist
-export $(grep -v '^#' ../.env)
+# # navigate into the build output directory
+# cd dist
+# export $(grep -v '^#' ../.env)
 
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+# # if you are deploying to a custom domain
+# # echo 'www.example.com' > CNAME
 
-git init
+# git init
 
-# source ../.env
-git config user.email ${GIT_EMAIL}
-git config user.name ${GIT_NAME}
+# # source ../.env
+# git config user.email ${GIT_EMAIL}
+# git config user.name ${GIT_NAME}
 
-git add -A
+# git add -A
+# git commit -m 'deploy'
+
+# # if you are deploying to https://<USERNAME>.github.io
+# # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
+
+# # if you are deploying to https://<USERNAME>.github.io/<REPO>
+# git push -f git@github.com:LogotipX/telegram-spa-test.git master:gh-pages
+
+# cd -
+
+mv ./dist/* ./
+git add .
 git commit -m 'deploy'
-
-# if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
-
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:LogotipX/telegram-spa-test.git master:gh-pages
-
-cd -
+git push
